@@ -1,8 +1,7 @@
-// app.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const dotenv = require('dotenv');
 
 // Load environment variables before importing passport
@@ -18,7 +17,15 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: false }));
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collectionName: 'sessions'
+  })
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'));  // Serve static files from the public directory
