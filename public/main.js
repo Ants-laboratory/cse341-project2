@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch('/auth/check');
       if (response.ok) {
         const user = await response.json();
-        messageDiv.textContent = `Logged in as ${user.username || user.displayName} please got to /api-docs`;
+        messageDiv.textContent = `Logged in as ${user.username || user.displayName}`;
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'block';
         fetchContacts();

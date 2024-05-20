@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 // Load environment variables before importing passport
 dotenv.config();
 
-const passport = require('./middleware/authenticate'); // Import passport after dotenv.config()
+const passport = require('./middleware/authenticate');
 const { specs, swaggerUi } = require('./swagger');
 const contactsRouter = require('./routes/contacts');
 
@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
 // MongoDB Connection
 const mongoUri = process.env.MONGO_URI;
 
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUri)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB:', err));
 
