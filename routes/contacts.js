@@ -1,65 +1,8 @@
 // routes/contacts.js
 
 const express = require('express');
-const passport = require('passport');
 const router = express.Router();
 const Contact = require('../models/contact');
-
-
-router.get('/login', passport.authenticate('github'), (req, res) => {});
-
-router.get('/logout', function(req, res , next){
-    req.logout(function(err) {
-        if (err) {return next (err); }
-        res.redirect('/');
-    });
-});
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Contact:
- *       type: object
- *       required:
- *         - username
- *         - password
- *         - email
- *         - characters
- *         - vip
- *       properties:
- *         id:
- *           type: string
- *           description: The auto-generated id of the contact
- *         username:
- *           type: string
- *           description: The username of the contact
- *         password:
- *           type: string
- *           description: The password of the contact
- *         email:
- *           type: string
- *           description: The email of the contact
- *         characters:
- *           type: number
- *           description: The number of characters
- *         vip:
- *           type: string
- *           description: The VIP status of the contact
- *       example:
- *         username: testusername
- *         password: yourpassword
- *         email: email@example.com
- *         characters: the amount of characters you have
- *         vip: yes or no
- */
-
-/**
- * @swagger
- * tags:
- *   name: Contacts
- *   description: The contacts managing API
- */
 
 /**
  * @swagger
@@ -204,7 +147,7 @@ router.delete('/:id', async (req, res) => {
             return res.status(404).json({ message: 'Contact not found' });
         }
 
-        await contact.deleteOne();
+        await Contact.deleteOne({ _id: req.params.id });
         res.json({ message: 'Contact deleted' });
     } catch (err) {
         res.status(500).json({ message: err.message });
