@@ -4,7 +4,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const dotenv = require('dotenv');
 
-// Load environment variables before importing passport
 dotenv.config();
 
 const passport = require('./middleware/authenticate');
@@ -28,7 +27,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static('public'));  // Serve static files from the public directory
+app.use(express.static('public'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Middleware to ensure user is authenticated
@@ -49,7 +48,7 @@ app.get('/auth/github/callback',
   }
 );
 
-// Route to display success message and user info
+// Check authentication route
 app.get('/auth/check', (req, res) => {
   if (req.isAuthenticated()) {
     res.json(req.user);
