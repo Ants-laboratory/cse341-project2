@@ -1,8 +1,8 @@
 // routes/contacts.js
 
 const express = require('express');
-const router = express.Router();
 const Contact = require('../models/contact');
+const router = express.Router();
 
 /**
  * @swagger
@@ -51,6 +51,7 @@ router.get('/', async (req, res) => {
  *       500:
  *         description: Some server error
  */
+
 router.post('/', async (req, res) => {
     const contact = new Contact({
         username: req.body.username,

@@ -1,5 +1,3 @@
-// swagger.js
-
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -17,44 +15,17 @@ const options = {
           type: 'object',
           required: ['username', 'password', 'email', 'characters', 'vip'],
           properties: {
-            id: {
-              type: 'string',
-              description: 'The auto-generated id of the contact',
-            },
-            username: {
-              type: 'string',
-              description: 'The username of the contact',
-            },
-            password: {
-              type: 'string',
-              description: 'The password of the contact',
-            },
-            email: {
-              type: 'string',
-              description: 'The email of the contact',
-            },
-            characters: {
-              type: 'number',
-              description: 'The number of characters',
-            },
-            vip: {
-              type: 'string',
-              description: 'The VIP status of the contact',
-            },
-          },
-          example: {
-            
-            username: 'yourusername',
-            password: 'yourpassword',
-            email: 'youremail@example.com',
-            characters: 2,
-            vip: 'yes',
+            username: { type: 'string' },
+            password: { type: 'string' },
+            email: { type: 'string' },
+            characters: { type: 'number' },
+            vip: { type: 'string' },
           },
         },
       },
     },
   },
-  apis: ['./routes/*.js'], // Path to the API routes
+  apis: ['./routes/*.js'],
 };
 
 const specs = swaggerJSDoc(options);
