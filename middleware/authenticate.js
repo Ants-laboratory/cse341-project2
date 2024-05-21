@@ -3,7 +3,7 @@ const GitHubStrategy = require('passport-github2').Strategy;
 
 const clientID = process.env.GITHUB_CLIENT_ID;
 const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-const callbackURL = process.env.CALLBACK_URL || "http://localhost:3000/auth/github/callback";
+const callbackURL = process.env.CALLBACK_URL || "https://cse341-project2-10yp.onrender.com/auth/github/callback";
 
 if (!clientID || !clientSecret || !callbackURL) {
   console.error('Missing environment variables for GitHub OAuth');
