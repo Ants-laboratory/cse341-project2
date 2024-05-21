@@ -43,10 +43,10 @@ const options = {
             },
           },
           example: {
-            id: 'd5fE_asz',
-            username: 'antmorera1',
-            password: '123456',
-            email: 'myemail@example.com',
+            
+            username: 'yourusername',
+            password: 'yourpassword',
+            email: 'youremail@example.com',
             characters: 2,
             vip: 'yes',
           },
